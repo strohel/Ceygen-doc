@@ -1,0 +1,251 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Ceygen &mdash; Ceygen 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Ceygen 0.1 documentation" href="index.html" />
+    <link rel="next" title="Core Functions" href="core.html" />
+    <link rel="prev" title="Ceygen API Documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="core.html" title="Core Functions"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Ceygen API Documentation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Ceygen 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="ceygen">
+<h1>Ceygen<a class="headerlink" href="#ceygen" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="about">
+<h2>About<a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h2>
+<p>Ceygen is a binary Python extension module helper for linear algebra with <a class="reference external" href="http://cython.org/">Cython</a>
+<a class="reference external" href="http://docs.cython.org/src/userguide/memoryviews.html">typed memoryviews</a>. Cython is built atop of <a class="reference external" href="http://eigen.tuxfamily.org/">Eigen C++ library</a>. Ceygen is <strong>not</strong>
+a Cython wrapper or an interface to Eigen!</p>
+<p>The name Ceygen is a rather poor wordplay on Cython + Eigen; it has nothing to do
+with software piracy.</p>
+<div class="section" id="licensing">
+<h3>Licensing<a class="headerlink" href="#licensing" title="Permalink to this headline">¶</a></h3>
+<p>Ceygen is currently distributed under GNU GPL v2+ license. The authors of
+Ceygen are however open to other licensing suggestions. (Do you want to use
+Ceygen in e.g. a BSD-licensed project? Ask!)</p>
+</div>
+</div>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<p>Ceygen...</p>
+<ul class="simple">
+<li><strong>is fast</strong> - Ceygen&#8217;s primary raison d&#8217;être is to provide overhead-free algebraic
+operations for Cython projects that work with <a class="reference external" href="http://docs.cython.org/src/userguide/memoryviews.html">typed memoryviews</a> (especially
+small-sized). For every function there is a code-path where no Python function is
+called, no memory is allocated on heap and no data is copied.
+<a class="reference external" href="http://eigen.tuxfamily.org/index.php?title=Benchmark">Eigen itself performs rather well</a>, too.</li>
+<li><strong>is documented</strong> - see <a class="reference internal" href="#documentation">Documentation</a></li>
+<li><strong>supports various data types</strong> - Ceygen uses Cython <a class="reference external" href="http://docs.cython.org/src/userguide/fusedtypes.html">fused types</a> (a.k.a. wannabe
+templates) along with Eigen&#8217;s template nature to support various data types without
+duplicating code. While just a few types are pre-defined (float, double, ...), adding
+a new type is a matter of adding 3 lines and rebuilding Ceygen.</li>
+<li><strong>is extensively tested</strong> - Ceygen&#8217;s test suite validates every public Cython method,
+including errors raised on invalid input. Thanks to Travis CI, <a class="reference external" href="https://travis-ci.org/strohel/Ceygen">every push is
+automatically tested</a> against <strong>Python 2.6</strong>, <strong>2.7</strong>, <strong>3.2</strong> and <strong>3.3</strong>.</li>
+<li><strong>is multithreading-friendly</strong> - Every Ceygen function doesn&#8217;t acquire the <a class="reference external" href="http://docs.python.org/glossary.html#term-global-interpreter-lock">GIL</a>
+unless it needs to create a Python object (always avoidable); all functions are
+declared <a class="reference external" href="http://docs.cython.org/src/userguide/external_C_code.html#declaring-a-function-as-callable-without-the-gil">nogil</a> so that you can call them in <a class="reference external" href="http://docs.cython.org/src/userguide/parallelism.html">prange</a> blocks without losing parallelism.</li>
+<li><strong>provides descriptive error messages</strong> - Care is taken to propagate all errors
+properly (down from Eigen) so that you are not stuck debugging your program. Ceygen
+functions don&#8217;t crash on invalid input but rather raise reasonable errors.</li>
+<li>works well with <a class="reference external" href="http://www.numpy.org/">NumPy</a>, but doesn&#8217;t depend on it. You don&#8217;t need NumPy to build or run
+Ceygen, but thanks to Cython, <a class="reference external" href="http://docs.cython.org/src/userguide/memoryviews.html#coercion-to-numpy">Cython memoryviews and NumPy arrays</a> are fully
+interchangeable without copying the data (where it is possible). The test suite
+currently makes use of NumPy because of our laziness. :-)</li>
+</ul>
+<p>On the other hand, Ceygen...</p>
+<ul class="simple">
+<li><strong>depends on Eigen build-time</strong>. Ceygen expects <em>Eigen 3</em> headers to be installed under
+<tt class="docutils literal"><span class="pre">/usr/lib/eigen3</span></tt> when it is being built. Installing Eigen is a matter of unpacking
+it, because it is a pure template library defined solely in the headers. Ceygen doesn&#8217;t
+reference Eigen at all at runtime because all code is complited in.</li>
+<li><strong>still provides a very little subset of Eigen functionality</strong>. We add new functions
+only as we need them in another projects, but we believe that the hard part is the
+infrastructure - implementing a new function should be rather straightforward (with
+decent Cython and C++ knowledge). We&#8217;re very open to pull requests!
+(do include unit tests in them)</li>
+<li><strong>needs recent Cython</strong> to compile. <a class="footnote-reference" href="#cythonvers" id="id1">[1]</a> If this is a problem, you can
+distribute .cpp files or final Python extension module instead.</li>
+<li><strong>doesn&#8217;t bring Eigen&#8217;s elegance to Cython</strong> - if you think of lazy evaluation and
+advanced expessions, stop dreaming. Ceygen will make your code faster, not nicer.
+<a class="reference external" href="https://github.com/cython/cython/pull/144">Array expessions</a> will help here.</li>
+</ul>
+</div>
+<div class="section" id="building">
+<h2>Building<a class="headerlink" href="#building" title="Permalink to this headline">¶</a></h2>
+<p>Ceygen uses standard Distutils to build, test and install itself, simply run:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">build</span></tt> to build Ceygen</li>
+<li><tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">test</span></tt> to test it (inside build directory)</li>
+<li><tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt> to install it</li>
+<li><tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">clean</span></tt> to clean generated object, .cpp and .html files (perhaps to
+force recompilation)</li>
+</ul>
+<p>Commands can be combined, automatically call dependent commands and can take options,
+the recommended combo to safely install Ceygen is therefore <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">-v</span> <span class="pre">test</span> <span class="pre">install</span></tt>.</p>
+<div class="section" id="building-options">
+<h3>Building Options<a class="headerlink" href="#building-options" title="Permalink to this headline">¶</a></h3>
+<p>You can set various build options as it is usual with distutils, see
+<tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">--help</span></tt>. Notable is the <cite>build_ext</cite> command and its <cite>&#8211;include-dirs</cite>
+(standard) and <cite>&#8211;cflags</cite> (Ceygen extension) options:</p>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">--include-dirs</span></kbd></td>
+<td>defaults to <cite>/usr/include/eigen3</cite> and must be specified if you&#8217;ve installed Eigen 3
+to a non-standard directory,</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--cflags</span></kbd></td>
+<td>defaults to <cite>-O2 -march=native</cite>. Please note that it is important to enable
+optimizations and generation of appropriate MMX/SSE/altivec-enabled code as the actual
+computation code from Eigen is built along with the boilerplate Ceygen code.</td></tr>
+</tbody>
+</table>
+<p>The resulting command could look like <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">build</span> <span class="pre">-v</span> <span class="pre">build_ext</span>
+<span class="pre">--include-dirs=/usr/local/include/eigen3</span> <span class="pre">--cflags=&quot;-O3</span> <span class="pre">-march=core2&quot;</span> <span class="pre">test</span></tt>. The
+same could be achieved by putting the options to a <cite>setup.cfg</cite> file:</p>
+<div class="highlight-python"><pre>[build_ext]
+include_dirs = /usr/local/include/eigen3
+cflags = -O3 -march=core2</pre>
+</div>
+</div>
+</div>
+<div class="section" id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<p>Ceygen documentation is maintained in <a class="reference external" href="http://sphinx-doc.org/rest.html">reStructuredText</a> format under <tt class="docutils literal"><span class="pre">doc/</span></tt> directory
+and can be exported into a variety of formats using <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a> (version at least 1.0 needed).
+Just type <tt class="docutils literal"><span class="pre">make</span></tt> in that directory to see a list of supported formats and for example
+<tt class="docutils literal"><span class="pre">make</span> <span class="pre">html</span></tt> to build HTML pages with the documentation.</p>
+<p>On-line documentation is in the works.</p>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="cythonvers" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>currently this is at least Cython 0.18.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Ceygen</a><ul>
+<li><a class="reference internal" href="#about">About</a><ul>
+<li><a class="reference internal" href="#licensing">Licensing</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#building">Building</a><ul>
+<li><a class="reference internal" href="#building-options">Building Options</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#documentation">Documentation</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Ceygen API Documentation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="core.html"
+                        title="next chapter">Core Functions</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/README.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="core.html" title="Core Functions"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Ceygen API Documentation"
+             >previous</a> |</li>
+        <li><a href="index.html">Ceygen 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Matěj Laitl.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

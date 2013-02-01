@@ -1,0 +1,276 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Core Functions &mdash; Ceygen 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Ceygen 0.1 documentation" href="index.html" />
+    <link rel="next" title="Element-wise operations" href="elemwise.html" />
+    <link rel="prev" title="Ceygen" href="README.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="elemwise.html" title="Element-wise operations"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="README.html" title="Ceygen"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Ceygen 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="core-functions">
+<h1>Core Functions<a class="headerlink" href="#core-functions" title="Permalink to this headline">¶</a></h1>
+<p>This module provides basic linear algebra operations such as vector and matrix
+products as provided by the &lt;<a class="reference external" href="http://eigen.tuxfamily.org/dox/QuickRefPage.html#QuickRef_Headers">Eigen/Core</a>&gt; include.</p>
+<span class="target" id="module-ceygen.dtype"></span><dl class="data">
+<dt id="ceygen.dtype.dtype">
+<tt class="descclassname">ceygen.dtype.</tt><tt class="descname">dtype</tt><a class="headerlink" href="#ceygen.dtype.dtype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cython <a class="reference external" href="http://docs.cython.org/src/userguide/fusedtypes.html">fused type</a>, currently just a C double (Python <a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">float</span></tt></a>).</p>
+</dd></dl>
+
+<span class="target" id="module-ceygen.core"></span><dl class="function">
+<dt id="ceygen.core.dot_vv">
+<tt class="descclassname">ceygen.core.</tt><tt class="descname">dot_vv</tt><big>(</big><em>x</em>, <em>y</em><big>)</big><a class="headerlink" href="#ceygen.core.dot_vv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Vector-vector dot product, returns a scalar of appropriate type.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> (<a class="reference internal" href="#ceygen.dtype.dtype" title="ceygen.dtype.dtype"><tt class="xref py py-obj docutils literal"><span class="pre">dtype[:]</span></tt></a>) &#8211; first factor</li>
+<li><strong>y</strong> (<a class="reference internal" href="#ceygen.dtype.dtype" title="ceygen.dtype.dtype"><tt class="xref py py-obj docutils literal"><span class="pre">dtype[:]</span></tt></a>) &#8211; second factor</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><a class="reference external" href="http://docs.python.org/library/exceptions.html#exceptions.ValueError" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">ValueError</span></tt></a> if argument dimensions aren&#8217;t
+appropriate for this operation or if arguments are otherwise invalid.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><a class="reference external" href="http://docs.python.org/library/exceptions.html#exceptions.TypeError" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">TypeError</span></tt></a> if you pass an argument that doesn&#8217;t
+support buffer interface (e.g. a plain list). Use preferrably a <a class="reference external" href="http://docs.cython.org/src/userguide/memoryviews.html">Cython memoryview</a>
+and resort to <a class="reference external" href="http://docs.python.org/library/array.html#array" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">Python</span> <span class="pre">array</span></tt></a>, <a class="reference external" href="http://docs.cython.org/src/userguide/memoryviews.html#cython-arrays">Cython array</a> or a
+<a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.6)"><tt class="xref py py-obj docutils literal"><span class="pre">NumPy</span> <span class="pre">array</span></tt></a>.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#ceygen.dtype.dtype" title="ceygen.dtype.dtype"><tt class="xref py py-obj docutils literal"><span class="pre">dtype</span></tt></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="ceygen.core.dot_mv">
+<tt class="descclassname">ceygen.core.</tt><tt class="descname">dot_mv</tt><big>(</big><em>x</em>, <em>y</em><span class="optional">[</span>, <em>out=None</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#ceygen.core.dot_mv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Matrix-(column) vector product, returns a vector of appropriate type.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> (<a class="reference internal" href="#ceygen.dtype.dtype" title="ceygen.dtype.dtype"><tt class="xref py py-obj docutils literal"><span class="pre">dtype[:,</span> <span class="pre">:]</span></tt></a>) &#8211; first factor (matrix)</li>
+<li><strong>y</strong> (<a class="reference internal" href="#ceygen.dtype.dtype" title="ceygen.dtype.dtype"><tt class="xref py py-obj docutils literal"><span class="pre">dtype[:]</span></tt></a>) &#8211; second factor (vector)</li>
+<li><strong>out</strong> (<a class="reference internal" href="#ceygen.dtype.dtype" title="ceygen.dtype.dtype"><tt class="xref py py-obj docutils literal"><span class="pre">dtype[:]</span></tt></a>) &#8211; memory view to write the result to. Specifying this optional argument
+means that Ceygen doesn&#8217;t have to allocate memory for the result (allocating memory
+involves acquiring the <a class="reference external" href="http://docs.python.org/glossary.html#term-global-interpreter-lock">GIL</a> and calling many expensive Python functions). Once
+specified, it must must have correct dimensions to store the result of this operation
+(otherwise you get <a class="reference external" href="http://docs.python.org/library/exceptions.html#exceptions.ValueError" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">ValueError</span></tt></a>); the same <em>out</em> instance will be also
+returned. <strong>Warning</strong>: don&#8217;t repeat <em>x</em> (or <em>y</em>) here, it <a class="reference external" href="http://eigen.tuxfamily.org/dox/TopicAliasing.html">would give incorrect result
+without any error</a>. Use in-place variant of this function instead.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><a class="reference external" href="http://docs.python.org/library/exceptions.html#exceptions.ValueError" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">ValueError</span></tt></a> if argument dimensions aren&#8217;t
+appropriate for this operation or if arguments are otherwise invalid.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><a class="reference external" href="http://docs.python.org/library/exceptions.html#exceptions.TypeError" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">TypeError</span></tt></a> if you pass an argument that doesn&#8217;t
+support buffer interface (e.g. a plain list). Use preferrably a <a class="reference external" href="http://docs.cython.org/src/userguide/memoryviews.html">Cython memoryview</a>
+and resort to <a class="reference external" href="http://docs.python.org/library/array.html#array" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">Python</span> <span class="pre">array</span></tt></a>, <a class="reference external" href="http://docs.cython.org/src/userguide/memoryviews.html#cython-arrays">Cython array</a> or a
+<a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.6)"><tt class="xref py py-obj docutils literal"><span class="pre">NumPy</span> <span class="pre">array</span></tt></a>.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#ceygen.dtype.dtype" title="ceygen.dtype.dtype"><tt class="xref py py-obj docutils literal"><span class="pre">dtype[:]</span></tt></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="ceygen.core.dot_vm">
+<tt class="descclassname">ceygen.core.</tt><tt class="descname">dot_vm</tt><big>(</big><em>x</em>, <em>y</em><span class="optional">[</span>, <em>out=None</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#ceygen.core.dot_vm" title="Permalink to this definition">¶</a></dt>
+<dd><p>(Row) vector-matrix product, returns a vector of appropriate type. This is equivalent
+to dotvm(<em>y</em>.T, <em>x</em>) because there&#8217;s no distinction between row and column vectors in
+Cython memoryviews, but calling this function directly may incur slightly less
+overhead.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> (<a class="reference internal" href="#ceygen.dtype.dtype" title="ceygen.dtype.dtype"><tt class="xref py py-obj docutils literal"><span class="pre">dtype[:]</span></tt></a>) &#8211; first factor (vector)</li>
+<li><strong>y</strong> (<a class="reference internal" href="#ceygen.dtype.dtype" title="ceygen.dtype.dtype"><tt class="xref py py-obj docutils literal"><span class="pre">dtype[:,</span> <span class="pre">:]</span></tt></a>) &#8211; second factor (matrix)</li>
+<li><strong>out</strong> (<a class="reference internal" href="#ceygen.dtype.dtype" title="ceygen.dtype.dtype"><tt class="xref py py-obj docutils literal"><span class="pre">dtype[:]</span></tt></a>) &#8211; memory view to write the result to. Specifying this optional argument
+means that Ceygen doesn&#8217;t have to allocate memory for the result (allocating memory
+involves acquiring the <a class="reference external" href="http://docs.python.org/glossary.html#term-global-interpreter-lock">GIL</a> and calling many expensive Python functions). Once
+specified, it must must have correct dimensions to store the result of this operation
+(otherwise you get <a class="reference external" href="http://docs.python.org/library/exceptions.html#exceptions.ValueError" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">ValueError</span></tt></a>); the same <em>out</em> instance will be also
+returned. <strong>Warning</strong>: don&#8217;t repeat <em>x</em> (or <em>y</em>) here, it <a class="reference external" href="http://eigen.tuxfamily.org/dox/TopicAliasing.html">would give incorrect result
+without any error</a>. Use in-place variant of this function instead.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><a class="reference external" href="http://docs.python.org/library/exceptions.html#exceptions.ValueError" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">ValueError</span></tt></a> if argument dimensions aren&#8217;t
+appropriate for this operation or if arguments are otherwise invalid.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><a class="reference external" href="http://docs.python.org/library/exceptions.html#exceptions.TypeError" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">TypeError</span></tt></a> if you pass an argument that doesn&#8217;t
+support buffer interface (e.g. a plain list). Use preferrably a <a class="reference external" href="http://docs.cython.org/src/userguide/memoryviews.html">Cython memoryview</a>
+and resort to <a class="reference external" href="http://docs.python.org/library/array.html#array" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">Python</span> <span class="pre">array</span></tt></a>, <a class="reference external" href="http://docs.cython.org/src/userguide/memoryviews.html#cython-arrays">Cython array</a> or a
+<a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.6)"><tt class="xref py py-obj docutils literal"><span class="pre">NumPy</span> <span class="pre">array</span></tt></a>.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#ceygen.dtype.dtype" title="ceygen.dtype.dtype"><tt class="xref py py-obj docutils literal"><span class="pre">dtype[:]</span></tt></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="ceygen.core.dot_mm">
+<tt class="descclassname">ceygen.core.</tt><tt class="descname">dot_mm</tt><big>(</big><em>x</em>, <em>y</em><span class="optional">[</span>, <em>out=None</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#ceygen.core.dot_mm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Matrix-matrix product, returns a matrix of appropriate type and dimensions. You may of
+course use this function to multiply matrices that are in fact vectors, you just need
+to pay attention to column-vector vs. row-vector distinction this time.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> (<a class="reference internal" href="#ceygen.dtype.dtype" title="ceygen.dtype.dtype"><tt class="xref py py-obj docutils literal"><span class="pre">dtype[:,</span> <span class="pre">:]</span></tt></a>) &#8211; first factor</li>
+<li><strong>y</strong> (<a class="reference internal" href="#ceygen.dtype.dtype" title="ceygen.dtype.dtype"><tt class="xref py py-obj docutils literal"><span class="pre">dtype[:,</span> <span class="pre">:]</span></tt></a>) &#8211; second factor</li>
+<li><strong>out</strong> (<a class="reference internal" href="#ceygen.dtype.dtype" title="ceygen.dtype.dtype"><tt class="xref py py-obj docutils literal"><span class="pre">dtype[:,</span> <span class="pre">:]</span></tt></a>) &#8211; memory view to write the result to. Specifying this optional argument
+means that Ceygen doesn&#8217;t have to allocate memory for the result (allocating memory
+involves acquiring the <a class="reference external" href="http://docs.python.org/glossary.html#term-global-interpreter-lock">GIL</a> and calling many expensive Python functions). Once
+specified, it must must have correct dimensions to store the result of this operation
+(otherwise you get <a class="reference external" href="http://docs.python.org/library/exceptions.html#exceptions.ValueError" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">ValueError</span></tt></a>); the same <em>out</em> instance will be also
+returned. <strong>Warning</strong>: don&#8217;t repeat <em>x</em> (or <em>y</em>) here, it <a class="reference external" href="http://eigen.tuxfamily.org/dox/TopicAliasing.html">would give incorrect result
+without any error</a>. Use in-place variant of this function instead.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><a class="reference external" href="http://docs.python.org/library/exceptions.html#exceptions.ValueError" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">ValueError</span></tt></a> if argument dimensions aren&#8217;t
+appropriate for this operation or if arguments are otherwise invalid.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><a class="reference external" href="http://docs.python.org/library/exceptions.html#exceptions.TypeError" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">TypeError</span></tt></a> if you pass an argument that doesn&#8217;t
+support buffer interface (e.g. a plain list). Use preferrably a <a class="reference external" href="http://docs.cython.org/src/userguide/memoryviews.html">Cython memoryview</a>
+and resort to <a class="reference external" href="http://docs.python.org/library/array.html#array" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">Python</span> <span class="pre">array</span></tt></a>, <a class="reference external" href="http://docs.cython.org/src/userguide/memoryviews.html#cython-arrays">Cython array</a> or a
+<a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.6)"><tt class="xref py py-obj docutils literal"><span class="pre">NumPy</span> <span class="pre">array</span></tt></a>.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#ceygen.dtype.dtype" title="ceygen.dtype.dtype"><tt class="xref py py-obj docutils literal"><span class="pre">dtype[:,</span> <span class="pre">:]</span></tt></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="README.html"
+                        title="previous chapter">Ceygen</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="elemwise.html"
+                        title="next chapter">Element-wise operations</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/core.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="elemwise.html" title="Element-wise operations"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="README.html" title="Ceygen"
+             >previous</a> |</li>
+        <li><a href="index.html">Ceygen 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Matěj Laitl.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
