@@ -115,6 +115,19 @@ distribute .cpp files or final Python extension module instead.</li>
 advanced expessions, stop dreaming. Ceygen will make your code faster, not nicer.
 <a class="reference external" href="https://github.com/cython/cython/pull/144">Array expessions</a> will help here.</li>
 </ul>
+<p>A simple example to compute matrix product within a big matrix may look like</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">cdef</span> <span class="n">double</span><span class="p">[:,</span> <span class="p">:]</span> <span class="n">big</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">,</span>   <span class="mf">2.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>   <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>                                  <span class="p">[</span><span class="mf">3.</span><span class="p">,</span>  <span class="mf">4.</span><span class="p">,</span>   <span class="mf">0.</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.</span><span class="p">,</span>   <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ceygen</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">dot_mm</span><span class="p">(</span><span class="n">big</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">],</span> <span class="n">big</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">],</span> <span class="n">big</span><span class="p">[:,</span> <span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">])</span>
+<span class="go">[[ 2. -4.]</span>
+<span class="go"> [ 6. -8.]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">big</span>
+<span class="go">[[ 1.  2.   2.  0.   2. -4.]</span>
+<span class="go"> [ 3.  4.   0. -2.   6. -8.]],</span>
+</pre></div>
+</div>
+<p>where the <a class="reference external" href="http://strohel.github.com/Ceygen-doc/core.html#ceygen.core.dot_mm">dot_mm</a> call above doesn&#8217;t copy any data, allocates no temporaries or memory
+on heap and doesn&#8217;t need the <a class="reference external" href="http://docs.python.org/glossary.html#term-global-interpreter-lock">GIL</a>.</p>
 </div>
 <div class="section" id="building">
 <h2>Building<a class="headerlink" href="#building" title="Permalink to this headline">¶</a></h2>
