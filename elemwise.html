@@ -57,6 +57,13 @@
   <div class="section" id="element-wise-operations">
 <h1>Element-wise Operations<a class="headerlink" href="#element-wise-operations" title="Permalink to this headline">¶</a></h1>
 <p>This module implements some basic element-wise operations such as addition or division.</p>
+<p>Because aliasing is not a problem for element-wise operations, you can make the operations
+in-place simply by repeating <em>x</em> or <em>y</em> in <em>out</em>. Following examples are therefore valid
+and produce expected results:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">ceygen</span><span class="o">.</span><span class="n">elemwise</span><span class="o">.</span><span class="n">add_mm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">ceygen</span><span class="o">.</span><span class="n">elemwise</span><span class="o">.</span><span class="n">multiply_vv</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This module exists only as a stop-gap until support for element-wise operations
