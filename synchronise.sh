@@ -3,7 +3,7 @@
 PROJECT_DIR="../ceygen"
 
 pushd "${PROJECT_DIR}"
-rev=$(git describe)
+rev=$(git describe --dirty)
 popd
 
 make -C "${PROJECT_DIR}/doc/" clean
