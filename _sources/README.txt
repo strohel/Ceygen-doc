@@ -129,24 +129,34 @@ Building Options
 
 You can set various build options as it is usual with distutils, see
 ``python setup.py --help``. Notable is the `build_ext` command and its `--include-dirs`
-(standard) and `--cflags` (Ceygen extension) options:
+(standard) and following additional options (whose are Ceygen extensions):
 
 --include-dirs
    defaults to `/usr/include/eigen3` and must be specified if you've installed Eigen 3
    to a non-standard directory,
 
 --cflags
-   defaults to `-O2 -march=native`. Please note that it is important to enable
+   defaults to `-O2 -march=native -fopenmp`. Please note that it is important to enable
    optimizations and generation of appropriate MMX/SSE/altivec-enabled code as the actual
-   computation code from Eigen is built along with the boilerplate Ceygen code.
+   computation code from Eigen is built along with the boilerplate Ceygen code,
 
-The resulting command could look like ``python setup.py build -v build_ext
---include-dirs=/usr/local/include/eigen3 --cflags="-O3 -march=core2" test``. The
-same could be achieved by putting the options to a `setup.cfg` file::
+--ldflags
+   additional flags to pass to linker, defaults to `-fopenmp`. Use standard `--libraries`
+   for specifying extra libraries to link against,
+
+--annotate
+   pass `--annotate` to Cython to produce annotated HTML files during compiling. Only
+   useful during Ceygen development.
+
+You may want to remove `-fopenmp` from `cflags` and `ldflags` if you are already
+parallelising above Ceygen. The resulting command could look like ``python setup.py -v
+build_ext --include-dirs=/usr/local/include/eigen3 --cflags="-O3 -march=core2" --ldflags=
+test``. The same could be achieved by putting the options to a `setup.cfg` file::
 
    [build_ext]
    include_dirs = /usr/local/include/eigen3
    cflags = -O3 -march=core2
+   ldflags =
 
 Documentation
 =============
@@ -156,10 +166,13 @@ and can be exported into a variety of formats using Sphinx_ (version at least 1.
 Just type ``make`` in that directory to see a list of supported formats and for example
 ``make html`` to build HTML pages with the documentation.
 
+See ``ChangeLog.rst`` file for changes between versions or `view it online`_.
+
 **On-line documentation** is available at http://strohel.github.com/Ceygen-doc/
 
 .. _reStructuredText: http://sphinx-doc.org/rest.html
 .. _Sphinx: http://sphinx-doc.org/
+.. _`view it online`: http://strohel.github.com/Ceygen-doc/ChangeLog.html
 
 Bugs
 ====

@@ -1,0 +1,144 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Ceygen Change Log &mdash; Ceygen 0.2-pre documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.2-pre',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Ceygen 0.2-pre documentation" href="index.html" />
+    <link rel="next" title="Core Data Types and Functions" href="core.html" />
+    <link rel="prev" title="Ceygen" href="README.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="core.html" title="Core Data Types and Functions"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="README.html" title="Ceygen"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Ceygen 0.2-pre documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="ceygen-change-log">
+<h1>Ceygen Change Log<a class="headerlink" href="#ceygen-change-log" title="Permalink to this headline">¶</a></h1>
+<p>This file mentions changes between Ceygen versions that are important for its users. Most
+recent versions and changes are mentioned on top.</p>
+<div class="section" id="changes-in-0-2-since-0-1">
+<h2>Changes in 0.2 since 0.1<a class="headerlink" href="#changes-in-0-2-since-0-1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Internal Ceygen .pxd files (e.g. <tt class="docutils literal"><span class="pre">eigen_cython.pxd</span></tt>) are no longer installed.</li>
+<li><tt class="docutils literal"><span class="pre">-fopenmp</span></tt> is now added by default to <cite>build_ext</cite> <tt class="docutils literal"><span class="pre">cflags</span></tt> and <tt class="docutils literal"><span class="pre">ldflags</span></tt> to
+enable parellelising <a class="reference internal" href="core.html#ceygen.core.dot_mm" title="ceygen.core.dot_mm"><tt class="xref py py-func docutils literal"><span class="pre">core.dot_mm()</span></tt></a> in Eigen; speedups are noticeable for matrices
+64*64 and bigger. Can be easily disabled.</li>
+<li><a class="reference internal" href="core.html#ceygen.dtype.vector" title="ceygen.dtype.vector"><tt class="xref py py-func docutils literal"><span class="pre">dtype.vector()</span></tt></a> and <a class="reference internal" href="core.html#ceygen.dtype.matrix" title="ceygen.dtype.matrix"><tt class="xref py py-func docutils literal"><span class="pre">dtype.matrix()</span></tt></a> convenience functions added; their usage
+in other modules leads to speedups because it circumvents Cython shortcoming.</li>
+<li><a class="reference internal" href="core.html#ceygen.core.set_is_malloc_allowed" title="ceygen.core.set_is_malloc_allowed"><tt class="xref py py-func docutils literal"><span class="pre">core.set_is_malloc_allowed()</span></tt></a> added to aid in debugging and tests.</li>
+<li><a class="reference internal" href="core.html#ceygen.core.dot_mm" title="ceygen.core.dot_mm"><tt class="xref py py-func docutils literal"><span class="pre">core.dot_mm()</span></tt></a> was optimized for C-contiguous and F-contiguous matrices resulting
+in roughly 40% speed gains.</li>
+<li>Simple benchmark was added, define <tt class="docutils literal"><span class="pre">BENCHMARK</span></tt> environment variable during test
+execution to run it.</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Ceygen Change Log</a><ul>
+<li><a class="reference internal" href="#changes-in-0-2-since-0-1">Changes in 0.2 since 0.1</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="README.html"
+                        title="previous chapter">Ceygen</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="core.html"
+                        title="next chapter">Core Data Types and Functions</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/ChangeLog.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="core.html" title="Core Data Types and Functions"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="README.html" title="Ceygen"
+             >previous</a> |</li>
+        <li><a href="index.html">Ceygen 0.2-pre documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Matěj Laitl.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

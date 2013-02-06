@@ -26,7 +26,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Ceygen 0.2-pre documentation" href="index.html" />
-    <link rel="next" title="Core Functions" href="core.html" />
+    <link rel="next" title="Ceygen Change Log" href="ChangeLog.html" />
     <link rel="prev" title="Ceygen API Documentation" href="index.html" /> 
   </head>
   <body>
@@ -40,7 +40,7 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="core.html" title="Core Functions"
+          <a href="ChangeLog.html" title="Ceygen Change Log"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="index.html" title="Ceygen API Documentation"
@@ -152,7 +152,7 @@ the recommended combo to safely install Ceygen is therefore <tt class="docutils 
 <h3>Building Options<a class="headerlink" href="#building-options" title="Permalink to this headline">¶</a></h3>
 <p>You can set various build options as it is usual with distutils, see
 <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">--help</span></tt>. Notable is the <cite>build_ext</cite> command and its <cite>&#8211;include-dirs</cite>
-(standard) and <cite>&#8211;cflags</cite> (Ceygen extension) options:</p>
+(standard) and following additional options (whose are Ceygen extensions):</p>
 <table class="docutils option-list" frame="void" rules="none">
 <col class="option" />
 <col class="description" />
@@ -163,17 +163,27 @@ the recommended combo to safely install Ceygen is therefore <tt class="docutils 
 to a non-standard directory,</td></tr>
 <tr><td class="option-group">
 <kbd><span class="option">--cflags</span></kbd></td>
-<td>defaults to <cite>-O2 -march=native</cite>. Please note that it is important to enable
+<td>defaults to <cite>-O2 -march=native -fopenmp</cite>. Please note that it is important to enable
 optimizations and generation of appropriate MMX/SSE/altivec-enabled code as the actual
-computation code from Eigen is built along with the boilerplate Ceygen code.</td></tr>
+computation code from Eigen is built along with the boilerplate Ceygen code,</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--ldflags</span></kbd></td>
+<td>additional flags to pass to linker, defaults to <cite>-fopenmp</cite>. Use standard <cite>&#8211;libraries</cite>
+for specifying extra libraries to link against,</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--annotate</span></kbd></td>
+<td>pass <cite>&#8211;annotate</cite> to Cython to produce annotated HTML files during compiling. Only
+useful during Ceygen development.</td></tr>
 </tbody>
 </table>
-<p>The resulting command could look like <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">build</span> <span class="pre">-v</span> <span class="pre">build_ext</span>
-<span class="pre">--include-dirs=/usr/local/include/eigen3</span> <span class="pre">--cflags=&quot;-O3</span> <span class="pre">-march=core2&quot;</span> <span class="pre">test</span></tt>. The
-same could be achieved by putting the options to a <cite>setup.cfg</cite> file:</p>
+<p>You may want to remove <cite>-fopenmp</cite> from <cite>cflags</cite> and <cite>ldflags</cite> if you are already
+parallelising above Ceygen. The resulting command could look like <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">-v</span>
+<span class="pre">build_ext</span> <span class="pre">--include-dirs=/usr/local/include/eigen3</span> <span class="pre">--cflags=&quot;-O3</span> <span class="pre">-march=core2&quot;</span> <span class="pre">--ldflags=</span>
+<span class="pre">test</span></tt>. The same could be achieved by putting the options to a <cite>setup.cfg</cite> file:</p>
 <div class="highlight-python"><pre>[build_ext]
 include_dirs = /usr/local/include/eigen3
-cflags = -O3 -march=core2</pre>
+cflags = -O3 -march=core2
+ldflags =</pre>
 </div>
 </div>
 </div>
@@ -183,6 +193,7 @@ cflags = -O3 -march=core2</pre>
 and can be exported into a variety of formats using <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a> (version at least 1.0 needed).
 Just type <tt class="docutils literal"><span class="pre">make</span></tt> in that directory to see a list of supported formats and for example
 <tt class="docutils literal"><span class="pre">make</span> <span class="pre">html</span></tt> to build HTML pages with the documentation.</p>
+<p>See <tt class="docutils literal"><span class="pre">ChangeLog.rst</span></tt> file for changes between versions or <a class="reference external" href="http://strohel.github.com/Ceygen-doc/ChangeLog.html">view it online</a>.</p>
 <p><strong>On-line documentation</strong> is available at <a class="reference external" href="http://strohel.github.com/Ceygen-doc/">http://strohel.github.com/Ceygen-doc/</a></p>
 </div>
 <div class="section" id="bugs">
@@ -225,8 +236,8 @@ Tracker</a>.</p>
   <p class="topless"><a href="index.html"
                         title="previous chapter">Ceygen API Documentation</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="core.html"
-                        title="next chapter">Core Functions</a></p>
+  <p class="topless"><a href="ChangeLog.html"
+                        title="next chapter">Ceygen Change Log</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/README.txt"
@@ -259,7 +270,7 @@ Tracker</a>.</p>
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="core.html" title="Core Functions"
+          <a href="ChangeLog.html" title="Ceygen Change Log"
              >next</a> |</li>
         <li class="right" >
           <a href="index.html" title="Ceygen API Documentation"
