@@ -1,0 +1,237 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Reductions &mdash; Ceygen 0.2-pre
+ documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.2-pre
+',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Ceygen 0.2-pre
+ documentation" href="index.html" />
+    <link rel="prev" title="LU Decomposition-powered Functions" href="lu.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="lu.html" title="LU Decomposition-powered Functions"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Ceygen 0.2-pre
+ documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="reductions">
+<h1>Reductions<a class="headerlink" href="#reductions" title="Permalink to this headline">¶</a></h1>
+<p>This module provides various reductions from matrices and vectors to scalars and from
+matrices to to vectors.</p>
+<span class="target" id="module-ceygen.reductions"></span><dl class="function">
+<dt id="ceygen.reductions.sum_v">
+<tt class="descclassname">ceygen.reductions.</tt><tt class="descname">sum_v</tt><big>(</big><em>x</em><big>)</big><a class="headerlink" href="#ceygen.reductions.sum_v" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return sum of the vector <em>x</em>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>x</strong> (<a class="reference internal" href="core.html#ceygen.dtype.dtype" title="ceygen.dtype.dtype"><tt class="xref py py-obj docutils literal"><span class="pre">dtype[:]</span></tt></a>) &#8211; vector to sum up</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><a class="reference external" href="http://docs.python.org/library/exceptions.html#exceptions.ValueError" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">ValueError</span></tt></a> if argument dimensions aren&#8217;t
+appropriate for this operation or if arguments are otherwise invalid.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><a class="reference external" href="http://docs.python.org/library/exceptions.html#exceptions.TypeError" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">TypeError</span></tt></a> if you pass an argument that doesn&#8217;t
+support buffer interface (e.g. a plain list). Use preferrably a <a class="reference external" href="http://docs.cython.org/src/userguide/memoryviews.html">Cython memoryview</a>
+and resort to <a class="reference external" href="http://docs.python.org/library/array.html#array" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">Python</span> <span class="pre">array</span></tt></a>, <a class="reference external" href="http://docs.cython.org/src/userguide/memoryviews.html#cython-arrays">Cython array</a> or a
+<a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.7)"><tt class="xref py py-obj docutils literal"><span class="pre">NumPy</span> <span class="pre">array</span></tt></a>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="core.html#ceygen.dtype.dtype" title="ceygen.dtype.dtype"><tt class="xref py py-obj docutils literal"><span class="pre">dtype</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="ceygen.reductions.sum_m">
+<tt class="descclassname">ceygen.reductions.</tt><tt class="descname">sum_m</tt><big>(</big><em>x</em><big>)</big><a class="headerlink" href="#ceygen.reductions.sum_m" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return sum of the matrix <em>x</em>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>x</strong> (<a class="reference internal" href="core.html#ceygen.dtype.dtype" title="ceygen.dtype.dtype"><tt class="xref py py-obj docutils literal"><span class="pre">dtype[:,</span> <span class="pre">:]</span></tt></a>) &#8211; matrix to sum up</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><a class="reference external" href="http://docs.python.org/library/exceptions.html#exceptions.ValueError" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">ValueError</span></tt></a> if argument dimensions aren&#8217;t
+appropriate for this operation or if arguments are otherwise invalid.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><a class="reference external" href="http://docs.python.org/library/exceptions.html#exceptions.TypeError" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">TypeError</span></tt></a> if you pass an argument that doesn&#8217;t
+support buffer interface (e.g. a plain list). Use preferrably a <a class="reference external" href="http://docs.cython.org/src/userguide/memoryviews.html">Cython memoryview</a>
+and resort to <a class="reference external" href="http://docs.python.org/library/array.html#array" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">Python</span> <span class="pre">array</span></tt></a>, <a class="reference external" href="http://docs.cython.org/src/userguide/memoryviews.html#cython-arrays">Cython array</a> or a
+<a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.7)"><tt class="xref py py-obj docutils literal"><span class="pre">NumPy</span> <span class="pre">array</span></tt></a>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="core.html#ceygen.dtype.dtype" title="ceygen.dtype.dtype"><tt class="xref py py-obj docutils literal"><span class="pre">dtype</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="ceygen.reductions.rowwise_sum">
+<tt class="descclassname">ceygen.reductions.</tt><tt class="descname">rowwise_sum</tt><big>(</big><em>x</em><span class="optional">[</span>, <em>out</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#ceygen.reductions.rowwise_sum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute sum of the invidual rows of matrix <em>x</em>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> (<a class="reference internal" href="core.html#ceygen.dtype.dtype" title="ceygen.dtype.dtype"><tt class="xref py py-obj docutils literal"><span class="pre">dtype[:,</span> <span class="pre">:]</span></tt></a>) &#8211; matrix to sum up</li>
+<li><strong>out</strong> (<a class="reference internal" href="core.html#ceygen.dtype.dtype" title="ceygen.dtype.dtype"><tt class="xref py py-obj docutils literal"><span class="pre">dtype[:]</span></tt></a>) &#8211; memory view to write the result to. Specifying this optional argument
+means that Ceygen doesn&#8217;t have to allocate memory for the result (allocating memory
+involves acquiring the <a class="reference external" href="http://docs.python.org/glossary.html#term-global-interpreter-lock">GIL</a> and calling many expensive Python functions). Once
+specified, it must must have correct dimensions to store the result of this operation
+(otherwise you get <a class="reference external" href="http://docs.python.org/library/exceptions.html#exceptions.ValueError" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">ValueError</span></tt></a>); the same <em>out</em> instance will be also
+returned. <strong>Warning</strong>: don&#8217;t repeat <em>x</em> (or <em>y</em>) here, it <a class="reference external" href="http://eigen.tuxfamily.org/dox/TopicAliasing.html">would give incorrect result
+without any error</a>. Perhaps there&#8217;s an in-place variant instead?</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><a class="reference external" href="http://docs.python.org/library/exceptions.html#exceptions.ValueError" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">ValueError</span></tt></a> if argument dimensions aren&#8217;t
+appropriate for this operation or if arguments are otherwise invalid.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><a class="reference external" href="http://docs.python.org/library/exceptions.html#exceptions.TypeError" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">TypeError</span></tt></a> if you pass an argument that doesn&#8217;t
+support buffer interface (e.g. a plain list). Use preferrably a <a class="reference external" href="http://docs.cython.org/src/userguide/memoryviews.html">Cython memoryview</a>
+and resort to <a class="reference external" href="http://docs.python.org/library/array.html#array" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">Python</span> <span class="pre">array</span></tt></a>, <a class="reference external" href="http://docs.cython.org/src/userguide/memoryviews.html#cython-arrays">Cython array</a> or a
+<a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.7)"><tt class="xref py py-obj docutils literal"><span class="pre">NumPy</span> <span class="pre">array</span></tt></a>.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="core.html#ceygen.dtype.dtype" title="ceygen.dtype.dtype"><tt class="xref py py-obj docutils literal"><span class="pre">dtype[:]</span></tt></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="ceygen.reductions.colwise_sum">
+<tt class="descclassname">ceygen.reductions.</tt><tt class="descname">colwise_sum</tt><big>(</big><em>x</em><span class="optional">[</span>, <em>out</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#ceygen.reductions.colwise_sum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute sum of the invidual columns of matrix <em>x</em>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> (<a class="reference internal" href="core.html#ceygen.dtype.dtype" title="ceygen.dtype.dtype"><tt class="xref py py-obj docutils literal"><span class="pre">dtype[:,</span> <span class="pre">:]</span></tt></a>) &#8211; matrix to sum up</li>
+<li><strong>out</strong> (<a class="reference internal" href="core.html#ceygen.dtype.dtype" title="ceygen.dtype.dtype"><tt class="xref py py-obj docutils literal"><span class="pre">dtype[:]</span></tt></a>) &#8211; memory view to write the result to. Specifying this optional argument
+means that Ceygen doesn&#8217;t have to allocate memory for the result (allocating memory
+involves acquiring the <a class="reference external" href="http://docs.python.org/glossary.html#term-global-interpreter-lock">GIL</a> and calling many expensive Python functions). Once
+specified, it must must have correct dimensions to store the result of this operation
+(otherwise you get <a class="reference external" href="http://docs.python.org/library/exceptions.html#exceptions.ValueError" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">ValueError</span></tt></a>); the same <em>out</em> instance will be also
+returned. <strong>Warning</strong>: don&#8217;t repeat <em>x</em> (or <em>y</em>) here, it <a class="reference external" href="http://eigen.tuxfamily.org/dox/TopicAliasing.html">would give incorrect result
+without any error</a>. Perhaps there&#8217;s an in-place variant instead?</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><a class="reference external" href="http://docs.python.org/library/exceptions.html#exceptions.ValueError" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">ValueError</span></tt></a> if argument dimensions aren&#8217;t
+appropriate for this operation or if arguments are otherwise invalid.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><a class="reference external" href="http://docs.python.org/library/exceptions.html#exceptions.TypeError" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">TypeError</span></tt></a> if you pass an argument that doesn&#8217;t
+support buffer interface (e.g. a plain list). Use preferrably a <a class="reference external" href="http://docs.cython.org/src/userguide/memoryviews.html">Cython memoryview</a>
+and resort to <a class="reference external" href="http://docs.python.org/library/array.html#array" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">Python</span> <span class="pre">array</span></tt></a>, <a class="reference external" href="http://docs.cython.org/src/userguide/memoryviews.html#cython-arrays">Cython array</a> or a
+<a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.7)"><tt class="xref py py-obj docutils literal"><span class="pre">NumPy</span> <span class="pre">array</span></tt></a>.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="core.html#ceygen.dtype.dtype" title="ceygen.dtype.dtype"><tt class="xref py py-obj docutils literal"><span class="pre">dtype[:]</span></tt></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="lu.html"
+                        title="previous chapter">LU Decomposition-powered Functions</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/reductions.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="lu.html" title="LU Decomposition-powered Functions"
+             >previous</a> |</li>
+        <li><a href="index.html">Ceygen 0.2-pre
+ documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Matěj Laitl.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
