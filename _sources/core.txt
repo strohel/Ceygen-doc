@@ -12,7 +12,13 @@ Core Data Types
 
 .. data:: dtype
 
-   Cython `fused type`_, currently just a C double (Python :obj:`float`).
+   Cython `fused type`_, a selection of C char, short, int, long, float and double
+   (Python :obj:`float`).
+
+.. data:: nonint_dtype
+
+   Cython `fused type`_ for methods that cannot work with integer types (such as
+   :func:`~ceygen.lu.inv`).
 
 .. function:: vector(size, like)
 
@@ -122,6 +128,13 @@ Miscellaneous Functions
    directive before including Eigen.
 
    See http://eigen.tuxfamily.org/dox/TopicPreprocessorDirectives.html
+
+.. function:: eigen_version()
+
+   Return version of Eigen which Ceygen was compiled against as a tuple of three integers,
+   for example (3, 1, 2).
+
+   :rtype: :obj:`tuple` of 3 :obj:`ints <int>`
 
 .. _`Eigen/Core`: http://eigen.tuxfamily.org/dox/QuickRefPage.html#QuickRef_Headers
 .. _`fused type`: http://docs.cython.org/src/userguide/fusedtypes.html

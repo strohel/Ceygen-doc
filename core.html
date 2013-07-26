@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Core Data Types and Functions &mdash; Ceygen 0.2
+    <title>Core Data Types and Functions &mdash; Ceygen 0.3
  documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.2
+        VERSION:     '0.3
 ',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Ceygen 0.2
+    <link rel="top" title="Ceygen 0.3
  documentation" href="index.html" />
     <link rel="next" title="Element-wise Operations" href="elemwise.html" />
     <link rel="prev" title="Ceygen Change Log" href="ChangeLog.html" /> 
@@ -48,7 +48,7 @@
         <li class="right" >
           <a href="ChangeLog.html" title="Ceygen Change Log"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Ceygen 0.2
+        <li><a href="index.html">Ceygen 0.3
  documentation</a> &raquo;</li> 
       </ul>
     </div>  
@@ -67,7 +67,15 @@ products as provided by the &lt;<a class="reference external" href="http://eigen
 <dl class="data">
 <dt id="ceygen.dtype.dtype">
 <tt class="descclassname">ceygen.dtype.</tt><tt class="descname">dtype</tt><a class="headerlink" href="#ceygen.dtype.dtype" title="Permalink to this definition">¶</a></dt>
-<dd><p>Cython <a class="reference external" href="http://docs.cython.org/src/userguide/fusedtypes.html">fused type</a>, currently just a C double (Python <a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">float</span></tt></a>).</p>
+<dd><p>Cython <a class="reference external" href="http://docs.cython.org/src/userguide/fusedtypes.html">fused type</a>, a selection of C char, short, int, long, float and double
+(Python <a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">float</span></tt></a>).</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ceygen.dtype.nonint_dtype">
+<tt class="descclassname">ceygen.dtype.</tt><tt class="descname">nonint_dtype</tt><a class="headerlink" href="#ceygen.dtype.nonint_dtype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cython <a class="reference external" href="http://docs.cython.org/src/userguide/fusedtypes.html">fused type</a> for methods that cannot work with integer types (such as
+<a class="reference internal" href="lu.html#ceygen.lu.inv" title="ceygen.lu.inv"><tt class="xref py py-func docutils literal"><span class="pre">inv()</span></tt></a>).</p>
 </dd></dl>
 
 <dl class="function">
@@ -291,6 +299,21 @@ directive before including Eigen.</p>
 <p>See <a class="reference external" href="http://eigen.tuxfamily.org/dox/TopicPreprocessorDirectives.html">http://eigen.tuxfamily.org/dox/TopicPreprocessorDirectives.html</a></p>
 </dd></dl>
 
+<dl class="function">
+<dt id="ceygen.core.eigen_version">
+<tt class="descclassname">ceygen.core.</tt><tt class="descname">eigen_version</tt><big>(</big><big>)</big><a class="headerlink" href="#ceygen.core.eigen_version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return version of Eigen which Ceygen was compiled against as a tuple of three integers,
+for example (3, 1, 2).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="http://docs.python.org/library/functions.html#tuple" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">tuple</span></tt></a> of 3 <a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">ints</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </div>
 </div>
 
@@ -353,7 +376,7 @@ directive before including Eigen.</p>
         <li class="right" >
           <a href="ChangeLog.html" title="Ceygen Change Log"
              >previous</a> |</li>
-        <li><a href="index.html">Ceygen 0.2
+        <li><a href="index.html">Ceygen 0.3
  documentation</a> &raquo;</li> 
       </ul>
     </div>

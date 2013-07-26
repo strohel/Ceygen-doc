@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Ceygen Change Log &mdash; Ceygen 0.2
+    <title>Ceygen Change Log &mdash; Ceygen 0.3
  documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.2
+        VERSION:     '0.3
 ',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Ceygen 0.2
+    <link rel="top" title="Ceygen 0.3
  documentation" href="index.html" />
     <link rel="next" title="Core Data Types and Functions" href="core.html" />
     <link rel="prev" title="Ceygen" href="README.html" /> 
@@ -48,7 +48,7 @@
         <li class="right" >
           <a href="README.html" title="Ceygen"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Ceygen 0.2
+        <li><a href="index.html">Ceygen 0.3
  documentation</a> &raquo;</li> 
       </ul>
     </div>  
@@ -62,6 +62,22 @@
 <h1>Ceygen Change Log<a class="headerlink" href="#ceygen-change-log" title="Permalink to this headline">¶</a></h1>
 <p>This file mentions changes between Ceygen versions that are important for its users. Most
 recent versions and changes are mentioned on top.</p>
+<div class="section" id="changes-in-0-3-since-0-2">
+<h2>Changes in 0.3 since 0.2<a class="headerlink" href="#changes-in-0-3-since-0-2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="core.html#ceygen.core.eigen_version" title="ceygen.core.eigen_version"><tt class="xref py py-func docutils literal"><span class="pre">eigen_version()</span></tt></a> function introduced to get Eigen version.</li>
+<li><a class="reference internal" href="llt.html#module-ceygen.llt" title="ceygen.llt"><tt class="xref py py-mod docutils literal"><span class="pre">llt</span></tt></a> module introduced with Cholesky matrix decomposition.</li>
+<li><a class="reference internal" href="core.html#ceygen.dtype.dtype" title="ceygen.dtype.dtype"><tt class="xref py py-obj docutils literal"><span class="pre">dtype</span></tt></a> enhanced to provide C char, short, int, long and float types in
+addition to C double type. <a class="reference internal" href="core.html#ceygen.dtype.nonint_dtype" title="ceygen.dtype.nonint_dtype"><tt class="xref py py-obj docutils literal"><span class="pre">nonint_dtype</span></tt></a> introduced for non-integer
+numeric types. If you get <em>no suitable method found</em> or <em>Invalid use of fused types,
+type cannot be specialized</em> Cython errors, specify the specialization explicitly:
+<tt class="docutils literal"><span class="pre">ceygen.elemwise.add_vv[double](np.array(...),</span> <span class="pre">np.array(...))</span></tt>. This unfortunately
+slows down compilation and makes resulting modules bigger, but doesn&#8217;t affect
+performance and makes Ceygen more generic.</li>
+<li><a class="reference internal" href="elemwise.html#ceygen.elemwise.power_vs" title="ceygen.elemwise.power_vs"><tt class="xref py py-func docutils literal"><span class="pre">power_vs()</span></tt></a> and <a class="reference internal" href="elemwise.html#ceygen.elemwise.power_ms" title="ceygen.elemwise.power_ms"><tt class="xref py py-func docutils literal"><span class="pre">power_ms()</span></tt></a> functions were added to the
+<a class="reference internal" href="reductions.html#module-ceygen.reductions" title="ceygen.reductions"><tt class="xref py py-mod docutils literal"><span class="pre">reductions</span></tt></a> module.</li>
+</ul>
+</div>
 <div class="section" id="changes-in-0-2-since-0-1">
 <h2>Changes in 0.2 since 0.1<a class="headerlink" href="#changes-in-0-2-since-0-1" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -95,6 +111,7 @@ in other modules leads to speedups because it circumvents Cython shortcoming.</l
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Ceygen Change Log</a><ul>
+<li><a class="reference internal" href="#changes-in-0-3-since-0-2">Changes in 0.3 since 0.2</a></li>
 <li><a class="reference internal" href="#changes-in-0-2-since-0-1">Changes in 0.2 since 0.1</a></li>
 </ul>
 </li>
@@ -143,7 +160,7 @@ in other modules leads to speedups because it circumvents Cython shortcoming.</l
         <li class="right" >
           <a href="README.html" title="Ceygen"
              >previous</a> |</li>
-        <li><a href="index.html">Ceygen 0.2
+        <li><a href="index.html">Ceygen 0.3
  documentation</a> &raquo;</li> 
       </ul>
     </div>

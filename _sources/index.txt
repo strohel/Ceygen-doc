@@ -10,7 +10,9 @@ Ceygen API Documentation
    core
    elemwise
    lu
+   llt
    reductions
+   HACKING
 
 Indices and tables
 ==================
